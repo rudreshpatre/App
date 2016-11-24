@@ -1,0 +1,45 @@
+﻿@model App.Models.GuestResponse
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RsvpForm</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <h3>Please fill your details below</h3>
+        <div>
+            @Html.Label("Name")
+            @Html.TextBoxFor(x=>x.Name)
+            @Html.ValidationMessageFor(x=>x.Name)
+        </div>
+        <div>
+
+            @Html.Label("Email")
+            @Html.TextBoxFor(x=>x.Email)
+            @Html.ValidationMessageFor(x=>x.Email)
+        </div>
+        <div>
+
+            @Html.Label("Phone")
+            @Html.TextBoxFor(x=>x.Phone)
+            @Html.ValidationMessageFor(x=>x.Phone)
+        </div>
+        <div>
+            @Html.Label("Will Attend?")
+            @Html.DropDownListFor(x=>x.WillAttend, new[] {
+           new SelectListItem() {Text="Yo! I am in",Value=bool.TrueString },
+           new SelectListItem() {Text="Negative",Value=bool.FalseString }
+           },"Choose an option")
+            @Html.ValidationMessageFor(x => x.WillAttend)
+        </div>
+        <div><input type="submit" name="Submit" value="Submit" /></div>
+    }
+</body>
+</html>
